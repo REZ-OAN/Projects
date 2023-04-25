@@ -1,0 +1,155 @@
+*{
+    margin : 0;
+    padding : 0;
+    background-color: black;
+}
+#Fdiv{
+      border-bottom : 1px solid grey;
+      height: 15px;
+      width: 100%;
+      position:static;
+      display: block;
+}
+#imdiv img{
+    margin-top : 50px;
+    margin-left: 30px;
+    float : left;
+    border-radius: 50%;
+    border : 5px solid crimson;
+    position: relative;
+}
+#navdiv { 
+    position : absolute;
+    margin-top: 75px;
+    margin-left: 450px;
+    max-width:500px;
+    
+        }
+#navdiv li {
+    display: block;
+    float : left;
+    margin-left: 15px;
+    
+}
+#navdiv li a{
+    text-decoration: none;
+    color : blueviolet;
+    font-size : 20px;
+   
+    padding : 5px;
+    border-radius: 3px;
+}
+#navdiv li a:hover {
+    color : crimson;
+    box-shadow: 1px 1px 2px lavender;
+}
+.act{
+    color : red !important;
+
+}
+#btn{
+    display: block;
+    position:relative;
+    color : lavender;
+    margin-top : 65px;
+    padding : 10px 30px;
+    margin-right: 50px;
+    float : right;
+    border: none;
+    font-size:20px;
+    background-image: linear-gradient(90deg,rgb(170, 61, 116),red);
+    border-radius: 10px;
+    font-weight: bolder;
+}
+#btn:hover{
+    color : black;
+    font-weight: bolder;
+    box-shadow: 1px 1px 4px lavender;
+}
+#leftdiv {
+    width : 500px;
+    height: 500px;
+    margin-top: 200px;
+    float : left;
+}
+#leftdiv .p1{
+    color : red;
+    font-size : 15px;
+    margin-left: -.5px;
+    
+}
+#leftdiv h1{
+    font-size: 45px;
+    font-weight: bolder;
+    color : lavender;
+  
+}
+#leftdiv small {
+    color : lavender;
+    font-size : 15px;
+    font-weight: 100;
+}
+
+#leftdiv #idiv {
+   margin-top : 15px;
+   margin-left: 20px;
+   width : 170px;
+   display: inline-block;
+ 
+}
+#idiv .im {
+    margin-right: -10px;
+    border-radius: 50%;
+    border: 2px solid crimson;
+}
+#leftdiv p {
+    display: inline-block;
+    color : lavender;
+    margin-left : 10px; 
+   
+}
+#btmain {
+    
+    color : lavender;
+    margin-top: 40px;
+    margin-left: 30px;
+    display: inline-block;
+    padding : 10px 40px;
+    font-size: 30px;
+    border: none;
+    background-image: linear-gradient(90deg,rgb(170, 61, 116),red);
+    font-weight: bolder;
+    border-radius: 10px;
+}
+#btmain:hover{
+    color : black;
+    font-weight: bolder;
+    box-shadow: 1px 1px 4px lavender;
+}
+#rightdiv {
+    float : right ;
+    height: 500px;
+    width: 600px;
+  
+}
+#rightdiv img{
+    display: block;
+    margin : 10px auto;
+    border : 10px solid rgba(0,0,0,.6)
+}
+#ftdiv {
+    display : block;
+    height: 20px;
+    width: 100%;
+    margin-top : 800px;
+    border-top : 1px solid white;
+}
+
+#ftdiv p {
+   
+    color : grey;
+    background-color: rgba(0,0,0,.6);
+    text-align: center;   
+    font-size: 12px; 
+    margin-top: 2px;
+}

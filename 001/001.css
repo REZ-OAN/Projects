@@ -1,0 +1,47 @@
+*{
+    background-color:#B2E5ED;
+}
+#head h1{
+     text-align: center;
+     color : crimson;
+     text-shadow: 1px 1px 10px hotpink;
+
+}
+#head img {
+    border-radius: 5px;
+    display : block;
+    margin-left : auto;
+    margin-right: auto;
+    box-shadow: 2px 2px 10px black;
+}
+#caption {
+    display: block;
+    height : 80px;
+    width : 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+#info {
+    display: block;
+    padding : 10px;
+    box-shadow : 2px 3px 6px red;
+}
+#u-id{
+    list-style-type : none;
+    list-style-image: url(icon1.png);
+    display: inline-block;
+    margin-top : -10px;
+}
+#u-id p{
+    display: block;
+    padding : 5px;   
+}
+#minfo p{
+    text-align: center;
+    font-size: 12px;
+    
+}
+#minfo p a{
+    text-decoration: none;
+    color : grey;
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey Panel</title>
+    <link rel="stylesheet" href="002.css">
+</head>
+<body>
+    <h1>Welcome To Survey Panel</h1>
+    <div id="card">
+        <span class="heading">Name</span>
+        <br/>
+        <input type="text" name="name" class="in" placeholder="Enter your name">
+        <br/>
+        <span class="heading">Email</span>
+        <br/>
+        <input type="email" name="email" class="in" placeholder="Enter your email">
+        <br/>
+        <span class="heading">Age</span>
+        <br/>
+        <input type="text" name="age" class="in" placeholder="Enter your age">
+        <br/>
+        <span>Which Option Best Describes you ?</span>
+        <br/>
+        <select name="description" class="in">
+            <option value="student">Student</option>
+                <option value="intern">Intern</option>
+                <option value="professional">Professional</option>
+                <option value="other">Other</option>
+        </select>
+        <br/>
+        <span>Would you recomend REZ-OAN to a friend ?
+        <br/>    
+        <p class="in1"><input type="radio" name="rad" value="Yes" >Yes</p>
+        <p class="in1"><input type="radio" name="rad" vlaue="Maybe">Maybe</p>
+        <p class="in1"><input type="radio" name="rad" value="No" >No</p>
+        <label class="in2">Languages and Frameworks Known (check all that apply) </label><br/>
+        <label for="inp-1" class="in2">
+            <input type="checkbox" class="in2"
+                   name="inp">C</input></label>
+        <br/>
+        <label for="inp-2" class="in2">
+            <input type="checkbox" class="in2"
+                   name="inp">C++</input></label>
+        <br/>
+        <label for="inp-3" class="in2">
+            <input type="checkbox" class="in2"
+            name="inp">C#</input></label>
+            <br/>
+        <label for="inp-4" class="in2">
+            <input type="checkbox" class="in2"
+                   name="inp">Java</input></label><br/>
+        <label for="inp-5" class="in2">
+            <input type="checkbox" class="in2"
+                   name="inp">Python</input></label><br/>
+        <label for="inp-6" class="in2">
+            <input type="checkbox" class="in2"
+                   name="inp">JavaScript</input></label><br/>
+        <label for="inp-7" class="in2">
+            <input type="checkbox" class="in2"
+                   name="inp">React</input></label><br/>
+        <label for="inp-7" class="in2">
+            <input type="checkbox" class="in2"
+                   name="inp">Angular</input></label><br/>
+        <label for="inp-7" class="in2">
+            <input type="checkbox" class="in2"
+                   name="inp">Django</input></label><br/>
+        <label for="inp-7" class="in2">
+            <input type="checkbox"
+                   name="inp" class="in2">Spring</input></label><br/>
+        <p class="in2">Any Comments or suggestions</p>
+        <textarea name="cmnt" id="cmnt" placeholder="Enter your comment here...">
+        </textarea><br/>
+        <button type="submit"  value="SUBMIT" id="btn">SUBMIT</button>
+    </div>
+</body>
+</html>

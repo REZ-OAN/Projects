@@ -1,0 +1,51 @@
+.logo {
+    height : 40px;
+    width : 64px;
+}
+.nbar-hover:hover {
+    color : #251749 !important;
+    border-radius: 10px;
+    box-shadow: .3px .3px 3px rgba(0,0,0,.2);
+    
+}
+.bgc {
+background-image: url(../images/headerimage.jpg);
+background-position:top;
+background-repeat: no-repeat;
+background-attachment: scroll;
+}
+.main {
+    height: 100vh;
+}
+
+.bgs1 {
+    min-height: 400px;
+    max-height: 1550px; 
+    
+}
+.bgs { 
+    height:250px;
+    background-color:cornflowerblue;
+    margin-top: 100px;
+    border-radius: 10px;
+}
+.smallimg{
+    height: 150px;
+    width:  270px;
+    align-self: center;
+    border-radius: 10px; 
+    
+}
+.cdhover:hover {
+   
+    box-shadow: 3px 3px 20px rgba(0,0,0,1);
+    z-index: 10;
+    
+}
+.mg {
+    margin-top : 30px;
+}
+.imgwh{
+    height : 700px;
+    width: 100%;
+}
