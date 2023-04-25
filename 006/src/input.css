@@ -7,8 +7,14 @@ body {
     background-image: url("../src/img/bg-tablet-pattern.svg");
     background-repeat: no-repeat;
     background-size : 800px;
-    background-position-x:130%;
-    background-position-y : 25%;
+    background-position-x: 180%;
+    background-position-y : -300%;
 }
-
+.mcontents{
+    background-image: url("../src/img/bg-tablet-pattern.svg");
+    background-repeat: no-repeat;
+    background-size : 500px;
+    background-position-x: -60%;
+    background-position-y : 0%;
+}
 
