@@ -700,6 +700,10 @@ video {
   flex-direction: column-reverse;
 }
 
+.items-start{
+  align-items: flex-start;
+}
+
 .items-end{
   align-items: flex-end;
 }
@@ -986,6 +990,10 @@ video {
 .text-white{
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.text-transparent{
+  color: transparent;
 }
 
 .outline-0{
@@ -1314,6 +1322,15 @@ header {
 
   .md\:text-left{
     text-align: left;
+  }
+
+  .md\:text-darkGrayishBlue{
+    --tw-text-opacity: 1;
+    color: hsl(227 12% 61% / var(--tw-text-opacity));
+  }
+
+  .md\:text-transparent{
+    color: transparent;
   }
 }
 
