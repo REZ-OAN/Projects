@@ -3,18 +3,31 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
+header {
     background-image: url("../src/img/bg-tablet-pattern.svg");
     background-repeat: no-repeat;
     background-size : 800px;
-    background-position-x: 180%;
-    background-position-y : -300%;
+    background-position-x: 120%;
+    background-position-y : 110%;
 }
-.mcontents{
+.simple-learn{
     background-image: url("../src/img/bg-tablet-pattern.svg");
-    background-repeat: no-repeat;
-    background-size : 500px;
-    background-position-x: -60%;
-    background-position-y : 0%;
+    background-blend-mode:color-burn;
+    background-repeat:no-repeat;
+    background-size : 400px;
+    background-position-x: 5%;
+    background-position-y : -20%;
 }
 
+
+@media(max-width:768px) {
+    header{
+        background-position-x: 30%;
+        background-position-y : -160%;
+    }
+    .simple-learn{
+        background-size: 500px;
+        background-position-x: -80%;
+        background-position-y : -110%;
+    }
+}
