@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Drum Kit</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <style>
+        
+        .container{
+            background-color:bisque;
+            height: 500px; 
+            margin-top : 110px;
+            
+        }
+        .key {
+            width : 100px;
+            background-color: rgba(0,0,0,.4);
+            border : solid black 5px;
+            border-radius: 5px;
+            padding : 1rem .5rem;
+            font-size : 1.5rem;
+            margin : 1rem;
+            text-align: center;
+            color : white;
+            text-shadow: 0 0 5px black;
+            transform: all .07s;
+        }
+        kbd{
+            display: block;
+            font-size:32px;
+        }
+        span{
+            margin-top: 10px;
+            display: block;
+            font-size:14px;
+            color : #ffc600;
+        }
+        .play{
+            transform : scale(1.1);
+            border-color : crimson;
+            box-shadow: 0 0 10px crimson;
+        }
+    </style>
+</head>
+<body>
+    <div class="container d-flex flex-row align-items-center  justify-content-center ">
+       
+                <div class="key" data-key="65">
+                    <kbd>A</kbd>
+                    <span class="sound">CLAP</span>
+                </div>
+                <div class="key" data-key="83">
+                    <kbd>S</kbd>
+                    <span class="sound">HIHAT</span>
+                </div>
+                <div class="key" data-key="68">
+                    <kbd>D</kbd>
+                    <span class="sound">KICK</span>
+                </div>
+                <div class="key" data-key="70">
+                    <kbd>F</kbd>
+                    <span class="sound">OPENHAT</span>
+                </div>
+                <div class="key" data-key="71">
+                    <kbd>G</kbd>
+                    <span class="sound">BOOM</span>
+                </div>
+                <div class="key" data-key="72">
+                    <kbd>H</kbd>
+                    <span class="sound">RIDE</span>
+                </div>
+                <div class="key" data-key="74">
+                    <kbd>J</kbd>
+                    <span class="sound">SNARE</span>
+                </div>
+                <div class="key" data-key="75">
+                    <kbd>K</kbd>
+                    <span class="sound">TOM</span>
+                </div>
+                <div class="key" data-key="76">
+                    <kbd>L</kbd>
+                    <span class="sound">TINK</span>
+                </div>
+       
+    </div>
+    <audio data-key="65" src="./JavaScript30/01 - JavaScript Drum Kit/sounds/clap.wav"></audio>
+    <audio data-key="83" src="./JavaScript30/01 - JavaScript Drum Kit/sounds/hihat.wav"></audio>
+    <audio data-key="68" src="./JavaScript30/01 - JavaScript Drum Kit/sounds/kick.wav"></audio>
+    <audio data-key="70" src="./JavaScript30/01 - JavaScript Drum Kit/sounds/openhat.wav"></audio>
+    <audio data-key="71" src="./JavaScript30/01 - JavaScript Drum Kit/sounds/boom.wav"></audio>
+    <audio data-key="72" src="./JavaScript30/01 - JavaScript Drum Kit/sounds/ride.wav"></audio>
+    <audio data-key="74" src="./JavaScript30/01 - JavaScript Drum Kit/sounds/snare.wav"></audio>
+    <audio data-key="75" src="./JavaScript30/01 - JavaScript Drum Kit/sounds/tom.wav"></audio>
+    <audio data-key="76" src="./JavaScript30/01 - JavaScript Drum Kit/sounds/tink.wav"></audio>
+    <script>
+        window.addEventListener('keydown',function(e) {
+            
+            const audio = document.querySelector(`audio[data-key='${e.keyCode}']`);
+            const key = document.querySelector(`.key[data-key='${e.keyCode}']`);
+            if(!audio) return;
+            audio.currentTime = 0;
+            audio.play();
+            key.classList.add('play');
+            setTimeout(function() {
+              key.classList.remove('play');
+            },75);
+       
+        });
+    </script>
+</body>
+</html>
