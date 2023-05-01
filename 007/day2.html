@@ -87,15 +87,15 @@
         function getDate(){
             const now = new Date();
             const sec = now.getSeconds();
-            const sdeg= (sec*6)+90
-            line_s.style.transform=`rotate(${sdeg}deg)`;
+            const sdeg= (sec*6)
+            line_s.style.transform=`rotate(${sdeg + 90}deg)`;
             const min = now.getMinutes();
-            const mdeg= (min*6) + (sdeg/60) +90 ;
-            line_m.style.transform=`rotate(${mdeg}deg)`;
+            const mdeg= (min*6) + (sdeg/60) ;
+            line_m.style.transform=`rotate(${mdeg + 90}deg)`;
             const ho = now.getHours();
-            const hdeg = (ho*30)+ (mdeg/60) + 90 ;
+            const hdeg = (ho*30)+ (mdeg/60)  ;
             console.log(hdeg);
-            line_h.style.transform=`rotate(${hdeg}deg)`;
+            line_h.style.transform=`rotate(${hdeg + 90}deg)`;
             
         }
         setInterval(getDate,1000) 
