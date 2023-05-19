@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex Panels Image Gallery</title>
+    <style>
+         html {
+      box-sizing: border-box;
+      background: #ffc600;
+      font-family: 'helvetica neue';
+      font-size: 20px;
+      font-weight: 200;
+    }
+    body {
+        margin : 0;
+    }
+    *, *:before, *:after {
+      box-sizing: inherit;
+    }
+    .container-panel{
+        min-height: 100vh;
+        overflow: hidden;
+        display: flex;
+    }
+    .ch-panel{
+      background: #6B0F9C;
+      color : rgba(77, 20, 71, 0.968);
+      text-shadow: 2px 1px rgba(255,255,255,.8);
+      background-position:center;
+      background-size: cover;
+      display : flex;
+      font-size:25px;
+      flex-direction: column;
+      flex:1;
+      align-items: center;
+      text-align: center;
+      justify-content: center;
+      transition:
+        font-size 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
+        flex 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
+        background 0.2s;
+        }
+        /* all child selector */
+    .ch-panel > *{
+        flex : 1 0 auto;
+        margin:0;
+        width:100%;
+        transition:transform 0.5s;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .ch-panel > *:first-child {
+        transform: translateY(-100%);
+    }
+    .ch-panel.open-active >*:first-child{
+        transform: translateY(0%);
+    }
+    .ch-panel.open-active > *:last-child{
+        transform : translateY(0%);
+    }
+    .ch-panel > *:last-child{
+        transform: translateY(100%);
+    }
+    .im-panel-1{
+        background-image: url("./flex-1.jpg");
+    }
+    .im-panel-2{
+        background-image: url("./flex-2.jpg");
+    }
+    .im-panel-3{
+        background-image: url("./flex-3.jpg");
+    }
+    .im-panel-4{
+        background-image: url("./flex-4.jpg");
+    }
+    .im-panel-5{
+        background-image: url("./flex-5.jpg");
+    }
+    .open{
+        flex : 5;
+        font-size : 40px;
+    }
+    </style>
+</head>
+<body>
+   <div class="container-panel">
+    <div class="ch-panel im-panel-1">
+    <p>Hey</p>
+      <p>Let's</p>
+      <p>Dance</p>
+    </div>
+    <div class="ch-panel im-panel-2 ">
+        <p>Give</p>
+        <p>Take</p>
+        <p>Receive</p>
+    </div>
+    <div class="ch-panel im-panel-3">
+        <p>Experience</p>
+        <p>It</p>
+        <p>Today</p>
+    </div>
+    <div class="ch-panel im-panel-4">
+        <p>Give</p>
+      <p>All</p>
+      <p>You can</p>
+    </div>
+    <div class="ch-panel im-panel-5">
+        <p>Life</p>
+        <p>In</p>
+        <p>Motion</p>
+    </div>
+   </div>
+    <script>
+        const chpanel = document.querySelectorAll('.ch-panel');
+        function toggleOpen(){
+            this.classList.toggle('open');
+           
+        }
+        function toggleOpenAct(e){
+            
+            if(e.propertyName.includes('flex'))
+            this.classList.toggle('open-active');
+        }
+        chpanel.forEach(panel => panel.addEventListener('click',toggleOpen));
+        chpanel.forEach(panel => panel.addEventListener('transitionend',toggleOpenAct));
+    </script>
+</body>
+</html>
