@@ -105,12 +105,17 @@
         });
        }
        function displayMatches(){
-            
-            const matchArr = findMatches(this.value,cities);
+            const  val= this.value;
+            if(val == "" || val === null || val === undefined){
+                makeLis.innerHTML="";
+            }
+            else {
+            const matchArr = findMatches(val,cities);
             const lis = matchArr.map(place => {
                 return `<li><span class='name'>${place.city},${place.state}</span> <span class='population'>${place.population}</span> </li>`;
             }).join('');
             makeLis.innerHTML = lis; 
+        }
        }
        scIn.addEventListener('keyup',displayMatches);
        scIn.addEventListener('change',displayMatches);
