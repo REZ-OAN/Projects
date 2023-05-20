@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax Type Ahead</title>
+    <style>
+        html {
+        background-color: rgb(255, 183, 1);
+        }
+        .input-container{
+            display : flex;
+            margin-top: 200px;
+            justify-content: center;
+            height: 100vh;
+        }
+        .input-box{
+            height: 50px;
+            width:500px;
+            border: 0px solid black;
+            border-radius: 40px;
+            padding : 10px;
+            padding-left:40px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,.6);
+            font-size : 25px;
+        }
+        .input-box:focus{
+            outline: none;
+            border: 0px solid black;
+            border-radius: 40px;
+            padding : 10px;
+            padding-left:40px;
+        }
+        .makeLis{
+            margin:0;
+            padding: 0;
+            position: relative;
+        }
+        .makeLis li {
+            background: white;
+            list-style: none;
+            border-bottom: 1px solid #D8D8D8;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.14);
+            margin-top:2px;
+            padding: 20px;
+            transition: .2s;
+            display: flex;
+            justify-content: space-between;
+            text-transform: capitalize;
+            box-shadow: 0px 0px 10px rgba(0,0,0,.5);
+        }
+        .makeLis li:nth-child(even) {
+            border-bottom-left-radius: 15px;
+            border-top-left-radius: 0px;
+            transform: perspective(100px) rotateX(-3deg);
+            border-bottom-right-radius: 15px;
+            border-top-right-radius: 0px;
+            background: linear-gradient(to bottom,  #ffffff 0%,#EFEFEF 100%);
+            }   
+
+        .makeLis li:nth-child(odd) {
+            border-bottom-right-radius: 0px;
+            border-top-right-radius: 15px;
+            transform: perspective(100px) rotateX(3deg);
+            border-bottom-left-radius: -px;
+            border-top-left-radius: 15px;
+            background: linear-gradient(to top,  #ffffff 0%,#EFEFEF 100%);
+            }
+        .name {
+            font-size : 20px;
+            color :rgb(175, 255, 1);
+            text-shadow: 1px 1px 2px rgba(0,0,0,.8);
+        }
+        .population {
+            font-size : 10px;
+            color : gray;
+            font-weight: bolder;
+        }
+    </style>
+</head>
+<body>
+        <div class="input-container">
+            <div class="item">
+                <input type="text" class="input-box">
+                <ul  class="makeLis">
+                    
+                </ul>
+            </div>
+        </div>
+    <script>
+       const url = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+       const cities = []; 
+       const pro = fetch(url);
+       
+       pro
+       .then(blob => blob.json())
+       .then(data => cities.push(...data));
+       const scIn =  document.querySelector('.input-box');
+       const makeLis = document.querySelector('.makeLis');
+       function findMatches(word, cities) {
+        return cities.filter(place =>{
+            const reg = new RegExp(word,'gi');
+            return place.city.match(reg) || place.state.match(reg);
+        });
+       }
+       function displayMatches(){
+            
+            const matchArr = findMatches(this.value,cities);
+            const lis = matchArr.map(place => {
+                return `<li><span class='name'>${place.city},${place.state}</span> <span class='population'>${place.population}</span> </li>`;
+            }).join('');
+            makeLis.innerHTML = lis; 
+       }
+       scIn.addEventListener('keyup',displayMatches);
+       scIn.addEventListener('change',displayMatches);
+       
+       
+    </script>
+</body>
+</html>
