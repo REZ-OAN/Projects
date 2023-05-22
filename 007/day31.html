@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO APPS</title>
+    <style>
+        *{
+            font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        .app-bg {
+            display : flex ;
+            justify-content: center;
+            align-items: center;
+            margin : 0 auto;
+            padding : 0;
+            flex-direction: column;
+            height: 100vh;
+            background-color: rgb(255, 191, 71);
+            width: 600px;
+        }
+        .app-head {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .app-head-item-2  p{
+                font-size: 40px;
+                font-weight: bold;
+                text-shadow: 1px 1px 2px;
+                text-align: justify;
+        }
+        .app-head-item-1 img {
+            height : 100px;
+            
+        }
+        .add-task{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-evenly;
+            height: 60px;
+            border-radius: 10px;
+            width: 80%;
+            background-color: lightcoral;
+        }
+        .add-task-item-1 p{
+                font-size : 20px;
+                color : whitesmoke;
+                font-weight: bold;
+        }
+        .input-task{
+            height: 35px;
+            width: 240px;
+            box-sizing: border-box;
+            padding : 20px;
+            font-size: 20px;
+            border: none;
+            outline-style: none;
+            border-radius: 5px;
+        }
+        .input-task:focus{
+                    outline-style: none;
+                    border: none;
+                    border-radius: 5px;
+        }
+       .add-task-item-3 button {
+        font-size: 15px;
+        padding: 8.5px;
+        background-color: rgb(251, 182, 79);
+        border: none;
+        outline-style: solid;
+        outline-width: 1px;
+        outline-color: white;
+        border-radius : 5px;
+        width: 60px;
+        transition : .04s;
+
+       }
+       .add-task-item-3 button:hover{
+              box-shadow: 0px 0px 5px rgba(0,0,0);
+              transform: scale(1.03);
+       }
+        .dashboard{
+            display: flex;
+            flex-direction: row; 
+            margin-top: 40px;
+            padding-bottom : 40px;
+            box-sizing: border-box;
+            justify-content: space-evenly;
+            background-color: rgba(123, 255, 116, 0.871);
+            height: auto;
+            width:90%;
+            border-radius: 10px;
+            box-shadow: 0px 0px 4px rgba(0,0,0,.5);
+
+            
+        }
+        
+        .dashboard-item-1{
+            display : flex;
+            flex-direction: column;
+            padding: 0;
+            height: auto;
+            width: 50%;
+        }
+        .dashboard-item-2{
+            display : flex;
+            flex-direction: column;
+            margin: 0;
+            padding: 0;
+            height: auto;
+            box-sizing: border-box;
+            width : 50%;
+        }
+        .item-head {
+            justify-self: center;
+            align-self: center;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            width: 70%;
+            margin-bottom: 20px;
+            height: 70px;
+            border-bottom: 2px solid white;
+        }
+
+        .task-list{
+            list-style: none;
+            padding: 0;
+
+            margin: 0;
+
+        }
+        .task-list input{
+            margin-right:20px; 
+        }
+        .task-list label{
+            font-size: 18px;
+
+        }
+        .del{
+           
+            
+            padding:5px;
+            background-color: rgb(202, 32, 32);
+            border: none;
+            border-radius: 5px;
+            color : white;
+            font-size: 15px;
+            width: 80px;
+            transition: .06s;
+            margin-left : 50px;
+        }
+        .del:hover{
+            box-shadow: 0px 0px 10px rgba(255,255,255,.9);
+            transform: scale(1.03);
+        }
+        .list-item span{
+            font-size: 18px;;
+        }
+        .list-item{
+            margin-top : 10px;
+            margin-left: 20px;
+           
+        }
+        .dashboard-item-1 .list-item{
+            border-right : 2px solid white;
+        }
+        .pop {
+            width : 400px;
+            height : 60px;
+            box-sizing : border-box;
+            margin-top : 10px;
+            margin-bottom : 10px;
+            font-size : 20px;
+            padding : 10px;
+            text-align: center;
+            border : none;
+            border-radius : 10px;
+            background-color: white;
+            color : red;
+            font-weight: bold;
+            text-shadow: 0px 0px 10px rgb(0,0,0);
+        }
+        .hide{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-bg">
+         <div class="app-head">
+            <div class="app-head-item-1">
+                <img src="./todo.png">
+            </div>
+            <div class="app-head-item-2">
+                <p>Hey Play With TODOOOOS</p>
+            </div>
+         </div>
+         <div class="add-task">
+            <div class="add-task-item-1">
+                <p>Add New Task </p>
+            </div>
+            <div class="add-task-item-2">
+                <input type="text" class="input-task">  
+            </div>
+            <form class="add-task-item-3">
+                <button class="add">Add</button>
+            </form>
+         </div>
+         <div class="dashboard">
+            <div class="dashboard-item-1">
+                <div class="item-head">
+                    <p>INCOMPLETE TASK</p>
+                </div>
+                <div class="item-body">
+                <ul class="task-list" id="inc-task">
+
+                </ul>
+                </div>
+            </div>
+            <div class="dashboard-item-2">
+                    <div class="item-head">
+                        <p>COMPLETED TASK</p>
+                    </div>
+                    <div class="item-body">
+                        <ul class="task-list" id="cm-task">
+                            
+                        </ul>
+                    </div>
+            </div>
+            
+        </div>
+    </div>
+    <script>
+        const new_task = document.querySelector('.add-task .add-task-item-2 .input-task');
+        const task_ = document.querySelector('.app-bg');
+        const dash_b = document.querySelector('.app-bg .dashboard');
+        const inc_task = document.querySelector('#inc-task');
+        const cm_task = document.querySelector('#cm-task');
+        let form = document.querySelector('form');
+      
+        // creating task and adding to incomplete task section
+        const  createTask = function (task_name){
+                const task_list = document.createElement('li');
+                task_list.classList.add('list-item');
+                const chkbox = document.createElement('input');
+                chkbox.type='checkbox';
+                task_list.append(chkbox);
+                const inp_label = document.createElement('label');
+                inp_label.innerText=task_name;
+                task_list.append(inp_label);
+                return task_list;
+        }
+      const moveTask = function(task_list,task_name){
+            const com_btn = document.createElement('button');
+            com_btn.className = 'del';
+            com_btn.innerHTML='DELETE';
+            task_list.appendChild(com_btn);
+            const chbx = task_list.querySelector('input[type="checkbox"]');
+            chbx.remove();
+            cm_task.appendChild(task_list)
+            appendTOCM(task_list,deleteTask);
+        }
+        const appendTOINC = function(task_list,moveask) {
+                const check_box = task_list.querySelector('input[type="checkbox"]');
+                check_box.onchange = moveask;
+            }
+            const deleteTask = function(){
+                const list_item = this.parentNode;
+                const ul = list_item.parentNode;
+                ul.removeChild(list_item);
+            }
+            const appendTOCM = function(task_list,deleteBtn){
+                const delbt = task_list.querySelector('.del');
+                delbt.onclick = deleteBtn;
+            }
+        const addTask =function(e){
+                e.preventDefault();
+              const task_name = new_task.value;
+              if(task_name === '' || task_name === null || task_name === undefined)
+              {
+                 const popup = document.createElement('div');
+                 popup.className='pop';
+                 popup.textContent='Please Enter Text';
+                 task_.insertBefore(popup,dash_b);
+                 setInterval(
+                    ()=>{
+                        popup.classList.add('hide');
+                    },1000)
+              }
+              else{
+                const task_list = createTask(task_name); 
+                appendToINC(task_list,moveTask(task_list,task_name));
+              }};
+           
+            for(let i=0;i<inc_task.children.length;i++){
+                appendTOINC(inc_task.children[i],moveTask(inc_task.children[i],inc_task.children[i].querySelector('input type["text"]').value));
+            }
+            for(let i=0; i< cm_task.children.length; i++ ) {
+                    bindCompleteItems(cm_task.children[i], deleteTask);
+            }
+            form.addEventListener('submit',addTask);
+    </script>
+</body>
+</html>
