@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation Using JavaScript</title>
+    <style>
+        :root{
+            --success-color : #2ecc71;
+            --error-color : #e74c3c;
+        }
+        body {
+            font-family: sans-serif;
+        }
+        .container {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0px 0px 5px #000;
+            width: 500px;
+            height: 100%;
+            text-align: center;
+            margin : 0 auto;
+            padding : 10px;
+        }
+        h2 {
+            text-transform: capitalize;
+            color : tomato;
+        }
+        .form-control {
+            padding: 20px;
+            position : relative;
+        }
+        .form-control label{
+            color: #777;
+            display: block;
+            margin-bottom: 10px;
+            text-align: justify;
+        }
+        .form-control input {
+            border : 2px solid #f0f0f0;
+            border-radius : 5px;
+            padding : 10px;
+            width: 90%;
+            font-size : 18px;
+        }
+        .form-control input:focus{
+            border-color: #777;
+            outline: none; 
+        }
+        .form-control.success{
+            border-color : var(--success-color);
+        }
+        .form-control.error{
+            border-color:var(--error-color);
+        }
+        .form-control small{
+            color : var(--error-color);
+            position: absolute;
+            bottom : 0;
+            left : 40px;
+           
+        }
+        .submit-btn{
+            color : white;
+            background-color: rgb(85, 88, 255);
+            width: 70%;
+            border-radius: 5px;
+            height: 40px;
+            font-size: 18px;
+            margin-top: 20px;
+            font-weight: bold;
+            margin: 10px auto;
+            border: none;
+        }
+        .submit-btn:hover{
+            background-color: rgba(85, 88, 255,.7);
+            color : crimson;
+        }
+    </style>
+</head>
+<body>
+    <form action="" method="post" id="form">
+        <div class="container">
+            <h2>Registration Form</h2>
+            <div class="form-control">
+                <label for="username">UserName</label>
+                <input type="text" id="username" placeholder="Enter Your UserName">
+                <small></small>
+            </div>
+            <div class="form-control">
+                <label for="email">Email</label>
+                <input type="text" id="email" placeholder="Enter Your Email">
+                <small></small>
+            </div>
+            <div class="form-control">
+                <label for="password">Password</label>
+                <input type="text" id="password" placeholder="Enter Your PassWord">
+                <small></small>
+            </div>
+            <div class="form-control">
+                <label for="confirm-password">Confirm Password</label>
+                <input type="text" id="confirm-password" placeholder="Renter Your PassWord">
+                <small></small>
+            </div>
+            <button class="submit-btn">SUBMIT</button>
+        </div>
+    </form>
+    <script>
+        let username = document.querySelector('#username');
+        let email = document.querySelector('#email');
+        let pass = document.querySelector('#password');
+        let cpass = document.querySelector('#confirm-password');
+        let form = document.querySelector('#form');
+        function ShowError(input,message) {
+            const form_control = input.parentElement;
+            form_control.className= "form-control error";
+            const small = form_control.querySelector('small');
+            small.innerText = message;
+        }
+        function ShowSuccess(input) {
+            const form_control = input.parentElement;
+            form_control.className= "form-control success";   
+        }
+        // email validation using regular expression
+        function check_mail(input){
+            const re = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+            if(re.test(input.value)){
+                ShowSuccess(input);
+            }
+            else {
+                const message = "Email Is Not Valid";
+                ShowError(input,message);
+            }
+        }
+        function check_username(input){
+            if(input.value.length < 3 || input.value.length > 32){
+                ShowError(input,"Username must be in between 3 to 32 characters")
+            }
+            else 
+            {
+                ShowSuccess(input);
+            }
+        }
+        function check_password(input1,input2){
+            if(input1.value !== input2.value){
+                ShowError(input2,'Password Doesn\'t Match');
+            }
+            else{
+                ShowSuccess(input2);
+            }
+        }
+        form.addEventListener('submit',(e)=>{
+            e.preventDefault();
+            check_username(username);
+            check_mail(email);
+            check_password(pass,cpass);
+        });
+
+
+    </script>
+</body>
+
+</html>

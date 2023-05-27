@@ -236,74 +236,7 @@
         </div>
     </div>
     <script>
-        const new_task = document.querySelector('.add-task .add-task-item-2 .input-task');
-        const task_ = document.querySelector('.app-bg');
-        const dash_b = document.querySelector('.app-bg .dashboard');
-        const inc_task = document.querySelector('#inc-task');
-        const cm_task = document.querySelector('#cm-task');
-        let form = document.querySelector('form');
-      
-        // creating task and adding to incomplete task section
-        const  createTask = function (task_name){
-                const task_list = document.createElement('li');
-                task_list.classList.add('list-item');
-                const chkbox = document.createElement('input');
-                chkbox.type='checkbox';
-                task_list.append(chkbox);
-                const inp_label = document.createElement('label');
-                inp_label.innerText=task_name;
-                task_list.append(inp_label);
-                return task_list;
-        }
-      const moveTask = function(task_list,task_name){
-            const com_btn = document.createElement('button');
-            com_btn.className = 'del';
-            com_btn.innerHTML='DELETE';
-            task_list.appendChild(com_btn);
-            const chbx = task_list.querySelector('input[type="checkbox"]');
-            chbx.remove();
-            cm_task.appendChild(task_list)
-            appendTOCM(task_list,deleteTask);
-        }
-        const appendTOINC = function(task_list,moveask) {
-                const check_box = task_list.querySelector('input[type="checkbox"]');
-                check_box.onchange = moveask;
-            }
-            const deleteTask = function(){
-                const list_item = this.parentNode;
-                const ul = list_item.parentNode;
-                ul.removeChild(list_item);
-            }
-            const appendTOCM = function(task_list,deleteBtn){
-                const delbt = task_list.querySelector('.del');
-                delbt.onclick = deleteBtn;
-            }
-        const addTask =function(e){
-                e.preventDefault();
-              const task_name = new_task.value;
-              if(task_name === '' || task_name === null || task_name === undefined)
-              {
-                 const popup = document.createElement('div');
-                 popup.className='pop';
-                 popup.textContent='Please Enter Text';
-                 task_.insertBefore(popup,dash_b);
-                 setInterval(
-                    ()=>{
-                        popup.classList.add('hide');
-                    },1000)
-              }
-              else{
-                const task_list = createTask(task_name); 
-                appendToINC(task_list,moveTask(task_list,task_name));
-              }};
-           
-            for(let i=0;i<inc_task.children.length;i++){
-                appendTOINC(inc_task.children[i],moveTask(inc_task.children[i],inc_task.children[i].querySelector('input type["text"]').value));
-            }
-            for(let i=0; i< cm_task.children.length; i++ ) {
-                    bindCompleteItems(cm_task.children[i], deleteTask);
-            }
-            form.addEventListener('submit',addTask);
+        
     </script>
 </body>
 </html>
