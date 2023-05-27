@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML5 Canvas</title>
+    <style >
+        h1 {
+            text-align: center;
+            font-size: 50px;
+            color : #ba4545;
+        }
+        #container {
+            margin: 0 auto;
+            padding : 0;
+            height: 600px;
+            width: 100%;
+            box-shadow: 0px 0px 10px #000;
+            background-color: #fafafa;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        #edit label{
+            font-size: 20px;
+            color : #ba4545;
+            font-weight: bold;
+        }
+        
+        #edit .item2 input{
+            height: 25px;
+            width: 70px;
+            border-radius: 5px;
+            border : none;
+            box-shadow: 0 0 5px;
+            outline : none;
+            background-color: #fafafa;
+        }
+        #edit .item1 .item-dropdown{
+                width: 80px;
+                height: 25px;
+                border: none;
+                border-radius: 5px;
+                background-color: rgb(0, 94, 255);
+                text-align: center;
+                font-size: 18px;
+                color  : white;
+
+        }
+        #edit .item1 .item-dropdown option{
+            background-color: white;
+            color : black;
+        }
+        #edit {
+            height: 50px;
+            width: 100%;
+        }
+        #container #edit {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+        }
+        #draw {
+            height: 500px;
+            width: 95%;
+            border: 3px solid burlywood;
+            align-content: start;
+        }
+        #edit .item3 input {
+           height: 19px;
+        }
+        #edit .item4 button{
+            height: 30px; 
+            width: 100px;
+            text-align: center;
+            border: none;
+            color : white;
+            background-color: #ba4545;
+            border-radius: 5px;
+        }
+        #edit .item4 button:hover {
+            background-color: lightblue;
+            color : #ba4545;
+
+        }
+    </style>
+</head>
+<body>
+    <h1>HTML CANVAS<br/>DRAW YOUR IMAGINATION</h1>
+    <div id="container">
+        <div id = "edit">
+            <div  class="item1">
+                <label for = "strokesize">Pen Size : </label>
+                <select class="item-dropdown"> 
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                </select>
+            </div>
+            <div class="item2">
+                <label for="selectcolor">Choose Color : </label>
+                <input type="color" class="item-color">
+            </div>
+            <div  class="item3">
+                <label for="s">HSL PEN </label>
+                <input type="checkbox" id="s">
+            </div>
+            <div class="item4">
+                <button class="download-btn">DOWNLOAD</button>
+            </div>
+            <div class="item4">
+                <button class="download-btn1">CLEAR</button>
+            </div>
+        </div>
+        <canvas id="draw" >
+        </canvas>
+    </div>
+    <script>
+        // selecting the color and the value
+        const color_element = document.querySelector('#edit .item2 input');
+        const pensize_element = document.querySelector('#edit .item1 .item-dropdown');
+        const chkbx = document.querySelector('#edit .item3 input');
+        const download = document.querySelector('#edit .item4 .download-btn');
+        const clr = document.querySelector('#edit .item4 .download-btn1');
+        let color = color_element.value;
+        let pensize  = pensize_element.value;
+        
+        // selecting the canvas on html
+       const canvas = document.querySelector('#draw');
+       // context of 2d creating;
+       let ctx = canvas.getContext('2d'); 
+       canvas.width = window.innerWidth;
+       canvas.height = window.innerHeight;
+       let hue = 0;
+       ctx.lineJoin = 'round';
+       ctx.lineCap = 'round';
+       ctx.offsetLeft = 0;
+       ctx.offsetTop = 0;
+       let isDrawing = false;
+       let lastX = 0;
+       let lastY = 0;
+      
+       function draw(e){
+             if(!isDrawing) return;
+
+             pensize_element.addEventListener('change',()=>{
+                pensize = pensize_element.value;
+             })
+             color_element.addEventListener('change',()=>{
+                color = color_element.value;
+             })
+             if(chkbx.checked==true){
+                color = `hsl(${hue},100%,50%)`;
+                hue = (hue + 1)%360;
+             }
+             ctx.strokeStyle =color;
+             ctx.lineWidth = pensize;
+             ctx.beginPath();
+             ctx.moveTo(lastX,lastY);
+             ctx.lineTo(e.offsetX,e.offsetY);
+             ctx.stroke();
+             [lastX,lastY] =[e.offsetX,e.offsetY]
+             
+       }
+       canvas.addEventListener('mousedown',(e)=>{
+        isDrawing=true;
+        [lastX,lastY] = [e.offsetX,e.offsetY];
+
+       });
+       canvas.addEventListener('mousemove',draw);
+       canvas.addEventListener('mouseup',()=> isDrawing=false);
+       canvas.addEventListener('mouseout',()=> isDrawing=false);
+       download.addEventListener('click',()=>{
+                const link = document.createElement("a");
+                link.download = "image.png";
+               link.href = canvas.toDataURL();
+              link.click();
+             });
+       clr.addEventListener('click',()=>{
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+       })
+    </script>
+</body>
+</html> 
