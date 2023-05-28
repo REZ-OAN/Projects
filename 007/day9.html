@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Some Dev Tools</title>
+</head>
+<body>
+    <script>
+        console.log('%c I\'m Groot','font-size:50px;background:white;text-shadow: 2px 1px 5px #000')
+        // warn about something
+        console.warn('Hey! Poopss')
+        // Error message
+        /// in which line the error occurs it will show it there
+        console.error('Bulling!!!')
+        /// info 
+        console.info('Crocodiles Are Strong')
+        // Testing
+        /// .assert(condition,false hole ki dekhabe)
+        console.assert(1==='1','That\'s An error')
+        ///cleaning
+        // console.clear()
+        // viewing dom 
+        // console.log() or .dir()
+        //grouping elements
+        const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
+        dogs.forEach(dog =>{
+            console.group(`${dog.name}`);
+            console.log(`Name is : ${dog.name}`);
+            console.log(`It is : ${dog.age} years old`);
+            console.groupEnd(`${dog.name}`);
+
+        })
+        // console.count() count the frequency of the value it has printed
+        // .time used to know how much time it takes to complete the process
+        console.time('fetching');
+        fetch('https://api.github.com/users/wesbos')
+        .then(data=> data.json())
+        .then(data=>{
+            console.log(data);
+            console.timeEnd('fetching');
+
+        })
+        console.table(dogs);
+
+    </script>
+</body>
+</html>
