@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object and Arrays</title>
+</head>
+<body>
+    <h1>reference vs copy</h1>
+    <script>
+        // example of copy
+        // same with the strings
+        let age = 100;
+        let age2 =age;
+        console.log(age,' ',age2);
+        age = 200;
+        console.log(age,' ',age2);
+        // arrays in javascript passed as reference 
+        const play = ['cricket','football','basketball','table tennis','spades'];
+        const play_cpy = play;
+         /// if you wanna copy
+         const playCopy = [].concat(play);
+         const playCpy = play.slice();
+         const playCPY = [...play];
+         // another method const playCC = Array.from(play);
+        console.log(play,'\n',play_cpy);
+        play_cpy[2]='tic tac toe';
+        console.log(play,'\n',play_cpy);
+        console.log(playCpy);
+        console.log(playCopy);
+        console.log(playCPY);
+        // creating a object
+        const person ={
+            name : 'Rez Wizard',
+            age : 80
+        }
+        // object also passed as reference
+        const captain = person;
+        captain.number = 99;
+        console.log(captain);
+        console.log(person);
+        // a copy but with new property of his own like inheritance
+       const cap = Object.assign({},person,{mber:38});
+       console.log(cap);
+       // only one level deep
+       const cap2 = {...person};
+       console.log('from cap2',cap2);
+       const rez = {
+            name : 'Rezoan',
+            age : '23',
+            lang: {
+                programming_lang : 'c++,java,js,python',
+                communicative_lang : 'bangla,english,hindi'
+            },
+            address:{
+                present : 'cuet,raozan',
+                permanent : 'nabogram road,barishal'
+            }
+       }
+       /// reference after one level
+       const rez_cpy = {...rez};
+       /// reference after one  level
+       const rezCpy = Object.assign({},rez);
+        /// copy not preferable 
+        const rezCPY = JSON.parse(JSON.stringify(rez));
+       rez.address.permanent='1149,west bogura,nabogram road,barishal';
+       console.log(rez_cpy);
+       console.log('From rezCpy',rezCpy);
+       console.log('From rezCPY',rezCPY);
+      
+
+    </script>
+</body>
+</html>
