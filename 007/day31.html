@@ -6,235 +6,252 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TODO APPS</title>
     <style>
-        *{
-            font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        body{
+            background-color:rgb(86, 86, 211);
+            padding: 0;
+            margin: 0;
+            font-family: 'Times New Roman', Times, serif;
         }
-        .app-bg {
-            display : flex ;
-            justify-content: center;
-            align-items: center;
-            margin : 0 auto;
-            padding : 0;
+        #appbackground{
+            background-color: blueviolet ;
+            width: 80%;
+            min-height: 700px;
+            margin: auto auto;
+            margin-top: 100px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,.5);
+            border-radius: 15px;
+            margin-bottom: 100px;
+            display: flex;
             flex-direction: column;
-            height: 100vh;
-            background-color: rgb(255, 191, 71);
-            width: 600px;
+            
         }
-        .app-head {
+        #header-image{
+            height: 150px;
+            margin-top: 40px;
+           
+            align-self: center;
+
+        }
+        #header-image img{
+            height: 150px;
+        }
+        #input-task{
+            font-size: 20px;
+            height: 80px;
+            width: 100%;
+            margin-top: 10px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
         }
-        .app-head-item-2  p{
-                font-size: 40px;
-                font-weight: bold;
-                text-shadow: 1px 1px 2px;
-                text-align: justify;
-        }
-        .app-head-item-1 img {
-            height : 100px;
+        #input-task .form-addTask{
             
+            display: flex;
+            width: 90%;
+            border-bottom: 1px solid white ;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            height: 100px;  
         }
-        .add-task{
+        .form-addTask label{
+            color : white;
+            text-shadow: 0px 0px 10px rgba(255,0,0,.9);
+            font-size: 25px;
+            font-weight: 700;
+        }
+        .form-addTask input[type="text"]{
+            height: 40px;
+            width: 500px;
+            font-size: 20px;
+            background-color: transparent;
+            border:none;
+            border-radius: 30px;
+            color : white;
+            outline-style: solid;
+            outline-color: blanchedalmond;
+            outline-width: 3px;
+            box-sizing: border-box;
+            padding-left: 30px;
+            transition: all .06s ease-in-out;
+
+
+        }
+        .form-addTask input[type="text"]::placeholder{
+            color : white;
+            opacity: .5;
+        }
+        .form-addTask input[type="text"]:focus{
+           outline-color: rgb(9, 204, 136);
+           outline-width: 3px;
+        }
+        .form-addTask input[type="submit"]{
+            height: 40px;
+            width: 150px;
+            font-size: 15px;
+            font-weight: bold;
+            background-color: rgb(101, 101, 214);
+            outline-width: 1px;
+            outline-style: solid;
+            outline-color: white;
+            border:none;
+            border-radius: 30px;
+            color : white;
+           
+            transition: all .3s ease-in-out;
+        }
+        .form-addTask input[type="submit"]:hover{
+            background-color:rgba(39, 150, 39, 0.956);
+            box-shadow: 0px 0px 10px rgba(0,0,0,.5);
+            transform: scale(1.04);
+            outline: none;
+            border: none;
+        }
+        #showcaseTask{
+            margin-top: 40px;
+            min-height: 500px;
+            margin-bottom: 20px;
+            width: 98%;
+           
+            align-self: center;
+            
             display: flex;
             flex-direction: row;
-            align-items: center;
-            justify-content: space-evenly;
-            height: 60px;
+            justify-content: space-around;
+            align-content: center;
+        }
+        #showcaseTask #incompleteTask{
+            margin-top: 15px;
+            width: 45%;
+            min-height: 350px;
             border-radius: 10px;
-            width: 80%;
-            background-color: lightcoral;
-        }
-        .add-task-item-1 p{
-                font-size : 20px;
-                color : whitesmoke;
-                font-weight: bold;
-        }
-        .input-task{
-            height: 35px;
-            width: 240px;
-            box-sizing: border-box;
-            padding : 20px;
-            font-size: 20px;
-            border: none;
-            outline-style: none;
-            border-radius: 5px;
-        }
-        .input-task:focus{
-                    outline-style: none;
-                    border: none;
-                    border-radius: 5px;
-        }
-       .add-task-item-3 button {
-        font-size: 15px;
-        padding: 8.5px;
-        background-color: rgb(251, 182, 79);
-        border: none;
-        outline-style: solid;
-        outline-width: 1px;
-        outline-color: white;
-        border-radius : 5px;
-        width: 60px;
-        transition : .04s;
-
-       }
-       .add-task-item-3 button:hover{
-              box-shadow: 0px 0px 5px rgba(0,0,0);
-              transform: scale(1.03);
-       }
-        .dashboard{
+            margin-bottom: 15px;
             display: flex;
-            flex-direction: row; 
-            margin-top: 40px;
-            padding-bottom : 40px;
-            box-sizing: border-box;
-            justify-content: space-evenly;
-            background-color: rgba(123, 255, 116, 0.871);
-            height: auto;
-            width:90%;
+            flex-direction: column;
+            align-items: center;
+            transition: all .4s ease-in-out;
+        }
+        #incompleteTask:hover{
+            transform: scale(1.05);
+            box-shadow: 0px 0px 5px rgba(0,0,0,.6);
+        }
+        #showcaseTask #completeTask{
+            margin-top: 15px;;
+            width: 45%;
+            min-height: 350px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             border-radius: 10px;
-            box-shadow: 0px 0px 4px rgba(0,0,0,.5);
-
-            
+            margin-bottom: 15px;
+            transition: all .4s ease-in-out;
         }
-        
-        .dashboard-item-1{
-            display : flex;
-            flex-direction: column;
-            padding: 0;
-            height: auto;
-            width: 50%;
+        #completeTask:hover{
+            transform: scale(1.05);
+            box-shadow: 0px 0px 5px rgb(0, 217, 255); 
         }
-        .dashboard-item-2{
-            display : flex;
-            flex-direction: column;
-            margin: 0;
-            padding: 0;
-            height: auto;
-            box-sizing: border-box;
-            width : 50%;
+        #completeTask #task-list li {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding-left: 10px;
+            padding-right: 30px;
         }
-        .item-head {
-            justify-self: center;
-            align-self: center;
-            text-align: center;
-            font-size: 20px;
-            font-weight: bold;
-            width: 70%;
-            margin-bottom: 20px;
-            height: 70px;
-            border-bottom: 2px solid white;
-        }
-
-        .task-list{
-            list-style: none;
-            padding: 0;
-
-            margin: 0;
-
-        }
-        .task-list input{
-            margin-right:20px; 
-        }
-        .task-list label{
-            font-size: 18px;
-
-        }
-        .del{
-           
-            
-            padding:5px;
-            background-color: rgb(202, 32, 32);
-            border: none;
-            border-radius: 5px;
+        #completeTask #task-list li input[type="button"]{
+            background-color: rgba(220, 20, 60, 0.6);
             color : white;
-            font-size: 15px;
-            width: 80px;
-            transition: .06s;
-            margin-left : 50px;
+            border-radius: 10px;
+            border: none;
+            outline: none;
+            transition: all .3s ease-in-out;
         }
-        .del:hover{
-            box-shadow: 0px 0px 10px rgba(255,255,255,.9);
-            transform: scale(1.03);
+        #completeTask #task-list li input[type="button"]:hover{
+            background-color: crimson;
         }
-        .list-item span{
-            font-size: 18px;;
-        }
-        .list-item{
-            margin-top : 10px;
-            margin-left: 20px;
+        #incompleteTask h1{
            
-        }
-        .dashboard-item-1 .list-item{
-            border-right : 2px solid white;
-        }
-        .pop {
-            width : 400px;
-            height : 60px;
-            box-sizing : border-box;
-            margin-top : 10px;
-            margin-bottom : 10px;
-            font-size : 20px;
-            padding : 10px;
             text-align: center;
-            border : none;
-            border-radius : 10px;
-            background-color: white;
-            color : red;
-            font-weight: bold;
-            text-shadow: 0px 0px 10px rgb(0,0,0);
+            color : rgba(255, 255, 255, 0.889);
+            text-shadow: 0px 0px 2px white;
+            align-self: center;
+            
         }
-        .hide{
-            display: none;
+        #completeTask h1{
+            text-align: center;
+            color : rgba(252, 252, 252, 0.947);
+            text-shadow: 0px 0px 5px black;
         }
+        #task-list{
+            list-style: none;
+            padding: 0px;
+            margin : 0px;
+            width: 80%;
+        }
+       
+        #task-list li{
+           
+            height: 40px;
+            box-sizing: border-box;
+            padding-top: 3px;
+            padding-left: 10px;
+            padding-bottom: 3px;
+            margin-bottom: 5px;
+            font-size: 25px;
+            background-color: rgb(233, 224, 224);
+            border-radius: 5px;
+        }
+        input[type="checkbox"]{
+            height: 15px;
+        }
+
     </style>
 </head>
 <body>
-    <div class="app-bg">
-         <div class="app-head">
-            <div class="app-head-item-1">
-                <img src="./todo.png">
-            </div>
-            <div class="app-head-item-2">
-                <p>Hey Play With TODOOOOS</p>
-            </div>
-         </div>
-         <div class="add-task">
-            <div class="add-task-item-1">
-                <p>Add New Task </p>
-            </div>
-            <div class="add-task-item-2">
-                <input type="text" class="input-task">  
-            </div>
-            <form class="add-task-item-3">
-                <button class="add">Add</button>
-            </form>
-         </div>
-         <div class="dashboard">
-            <div class="dashboard-item-1">
-                <div class="item-head">
-                    <p>INCOMPLETE TASK</p>
-                </div>
-                <div class="item-body">
-                <ul class="task-list" id="inc-task">
-
+   <div id="appbackground">
+      <div id="header-image">
+        <img src="./todo.png">
+      </div>
+      <div id="input-task">
+        <form class="form-addTask">
+            <label for="addTask">
+                Add Task 
+            </label>
+            <input type="text" placeholder="input text here" name="addTask">
+            <input type="submit" name="addTasktolist" value="ADD">
+        </form>
+      </div>
+      <div id="showcaseTask">
+          <div id="incompleteTask">
+                <h1>Incomplete Task</h1>
+                <ul id="task-list">
+                    <li>
+                        <input type="checkbox" value="false" data-index="1">
+                        hello
+                    </li>
+                    <li>
+                        <input type="checkbox" value="false" data-index="1">
+                        hello
+                    </li>
                 </ul>
-                </div>
-            </div>
-            <div class="dashboard-item-2">
-                    <div class="item-head">
-                        <p>COMPLETED TASK</p>
-                    </div>
-                    <div class="item-body">
-                        <ul class="task-list" id="cm-task">
-                            
-                        </ul>
-                    </div>
-            </div>
-            
-        </div>
-    </div>
+          </div>
+          
+          <div id="completeTask">
+                <h1>Complete Task</h1>
+                <ul id="task-list">
+                    <li>
+                        <span>Hello</span>
+                        <input type="button"  value="DELETE" data-index="1">
+                    </li>
+                    <li>
+                        
+                        <span>Hello</span>
+                        <input type="button"  value="DELETE" data-index="2">
+                    </li>
+                </ul>
+          </div>
+      </div>
+   </div>
     <script>
         
     </script>
