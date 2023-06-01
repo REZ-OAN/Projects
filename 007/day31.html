@@ -217,7 +217,7 @@
             <label for="addTask">
                 Add Task 
             </label>
-            <input type="text" placeholder="input text here" name="addTask">
+            <input type="text" placeholder="input text here" autocomplete="off" name="addTask">
             <input type="submit" name="addTasktolist" value="ADD">
         </form>
       </div>
@@ -225,35 +225,95 @@
           <div id="incompleteTask">
                 <h1>Incomplete Task</h1>
                 <ul id="task-list">
-                    <li>
-                        <input type="checkbox" value="false" data-index="1">
-                        hello
-                    </li>
-                    <li>
-                        <input type="checkbox" value="false" data-index="1">
-                        hello
-                    </li>
+                    
                 </ul>
           </div>
           
           <div id="completeTask">
                 <h1>Complete Task</h1>
                 <ul id="task-list">
-                    <li>
-                        <span>Hello</span>
-                        <input type="button"  value="DELETE" data-index="1">
-                    </li>
-                    <li>
-                        
-                        <span>Hello</span>
-                        <input type="button"  value="DELETE" data-index="2">
-                    </li>
+                   
                 </ul>
           </div>
       </div>
    </div>
     <script>
-        
+        const addTask = document.querySelector('#input-task  .form-addTask');
+        const incUl = document.querySelector('#incompleteTask #task-list');
+        const cUl = document.querySelector('#completeTask #task-list');
+        const incompleteItemList = JSON.parse(localStorage.getItem('incI')) || [];
+        const completeItemList = JSON.parse(localStorage.getItem('cI')) || [];
+        const incCheckBox = document.querySelectorAll
+        let incItemNo = 0;
+        function saveonLocalStorage(class_key,class_value){
+            localStorage.setItem(class_key,class_value);
+        }
+        function addTaskToIncList(incUl,itemsList=[]){
+            
+            incUl.innerHTML = itemsList.map((item,i)=>{
+                return  `
+                    <li>
+                        <input type="checkbox" data-index=${i} ${item.isdone? 'checked':''} />
+                       <span>${item.text}</span>
+                    </li>
+                    `;
+            }).join('');
+            
+        }
+        function addTaskToClist(cUl,itemsList=[]){
+            cUl.innerHTML=itemsList.map((item,i)=>{
+                return `<li>
+                        <span>${item.text}</span>
+                        <input type="button"  value="DELETE" data-index="${i}">
+                    </li>`;
+            }).join('');
+        }
+        function addtasktoList(e){
+          e.preventDefault();
+          const Name = this.querySelector('input[type="text"]').value;
+          if(Name===''||Name===undefined||Name===null){
+            window.alert('Hey, Insert Valid Text!! Null Text Is Not a Valid Text :V');
+          }
+          else {
+          const itemstate = {
+            text : `${Name}`,
+            isdone : false
+          }
+          incompleteItemList.push(itemstate);
+          addTaskToIncList(incUl,incompleteItemList);
+          saveonLocalStorage('incI',JSON.stringify(incompleteItemList)); 
+          this.reset();
+        }
+        }
+        function passIncToC(e){
+            if(!e.target.matches('input'))return;
+            const item = e.target;
+            const idx = item.dataset.index;
+            completeItemList.push(incompleteItemList[idx]);
+            incompleteItemList.splice(idx,1);
+            saveonLocalStorage('incI',JSON.stringify(incompleteItemList));
+            setTimeout(function() {
+                addTaskToIncList(incUl,incompleteItemList);
+                addTaskToClist(cUl,completeItemList);
+                saveonLocalStorage('cI',JSON.stringify(completeItemList));
+            },250);
+
+        }
+        function removeFromCompleteList(e){
+            if(!e.target.matches('input'))return;
+            const item = e.target
+            const idx = item.dataset.index;
+            completeItemList.splice(idx,1);
+            setTimeout(function() {
+                addTaskToClist(cUl,completeItemList);
+                saveonLocalStorage('cI',JSON.stringify(completeItemList));
+            },250);
+        }
+        addTask.addEventListener('submit',addtasktoList);
+        incUl.addEventListener('click',passIncToC);
+        cUl.addEventListener('click',removeFromCompleteList);
+        addTaskToIncList(incUl,incompleteItemList);
+        addTaskToClist(cUl,completeItemList);
     </script>
 </body>
 </html>

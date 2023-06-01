@@ -143,7 +143,7 @@
                 done : false
             }
             itemList.push(item);
-            addToList(itemList,items)
+            addToList(itemList,items);
             localStorage.setItem('items',JSON.stringify(itemList));
             this.reset();
             
@@ -171,7 +171,7 @@
         }
        
         form.addEventListener('submit',addItem);
-        items.addEventListener('click',toggleDone)
+        items.addEventListener('click',toggleDone);
         addToList(itemList,items);
         
     </script>
