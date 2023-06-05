@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHADOW MOVES WITH MOUSE MOVE</title>
+    <style>
+        .container{
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            position: relative;
+            height: 700px;
+            justify-content: center;
+            align-items: center;
+        }
+        .text-body{
+            height: 150px;
+            width: 400px;
+            border: 2px solid black;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+        .text-body span{
+            color: blueviolet;
+            font-size: 100px;
+        }
+       
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <div class="text-body">
+            <span>HELLO</span>
+        </div>
+    </div>
+    <script>
+        const text = document.querySelector('.text-body span');
+        const container = document.querySelector('.container');
+        const walk = 500;
+        function shadowgen(e){
+            const divtxt = document.querySelector('.text-body');
+            let xx = e.offsetX;
+            let yy = e.offsetY;
+            let x = this.offsetWidth;
+            let y = this.offsetHeight;
+            if(this!==e.target){
+                xx = xx + e.target.offsetLeft;
+                yy = yy + e.target.offsetTop;
+            }
+            xx =Math.round(((xx/x)*walk) - (walk/2));
+            yy = Math.round(((yy/y)*walk) - (walk/2));
+            text.style.textShadow = `
+                ${xx}px ${yy}px 5px red,
+                ${-xx}px ${yy}px 5px lime,
+                ${xx}px ${-yy}px 5px grey,
+                ${-xx}px ${-yy}px 5px black
+            `;
+        }
+        container.addEventListener('mousemove',shadowgen);
+    </script>
+
+</body>
+</html>
