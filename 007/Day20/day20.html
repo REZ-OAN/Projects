@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speech Recognition Using JavaScript</title>
+    <style>
+        body{
+            background-color: #bada55;
+        }
+        .ontainer{
+            background-color:white;
+            height: 700px;
+            border-radius: 10px;
+            box-shadow: 1px 1px 5px black;
+            width: 80%;
+            margin: 0 auto;
+          
+        }
+        p {
+            padding : 5px 20px;
+            margin : 10px 0px;
+        }
+    </style>
+</head>
+<body>
+    <div class="ontainer">
+  
+    </div>
+    <script>
+            window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            const recog = new SpeechRecognition();
+            recog.interimResults = true;
+            const con =  document.querySelector('.ontainer');
+            let p = document.createElement('p');
+            con.appendChild(p);
+             recog.addEventListener('result',e=>{
+                const script = Array.from(e.results).map(result=>result[0]).map(result=>result.transcript).join('');
+               
+                p.textContent=script;
+                
+                if(e.results[0].isFinal){
+                    p = document.createElement('p');
+                    con.appendChild(p);
+                }
+             });
+             setInterval(() => {
+                recog.addEventListener('end',recog.start);
+             },1);
+            
+             recog.start();  
+    </script>
+</body>
+</html>
